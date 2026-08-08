@@ -476,8 +476,20 @@ def forward_logits_onehot(onehot, w_matrix):
     # TODO: compute logits for the neural bigram model as the matrix product of one-hot inputs and W.
     return onehot @ w_matrix
 
-# Step 61 - observe_lookup_equivalence (not yet solved)
-# TODO: implement
+# Step 61 - observe_lookup_equivalence
+import numpy as np
+
+def observe_lookup_equivalence(w, ids):
+    onehot = np.zeros((len(ids), w.shape[0]))
+    onehot[np.arange(len(ids)), ids] = 1.0
+
+    onehot_result = onehot @ w
+    index_result = w[ids]
+
+    return {
+        "onehot_result": onehot_result,
+        "index_result": index_result,
+    }
 
 # Step 62 - forward_logits_lookup (not yet solved)
 # TODO: implement

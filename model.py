@@ -240,8 +240,15 @@ def naive_softmax_1d(logits):
     # TODO: exponentiate the logits, then divide by their total sum
     return array_exp(logits) / sum_all(array_exp(logits))
 
-# Step 31 - softmax_overflow_demo (not yet solved)
-# TODO: implement
+# Step 31 - softmax_overflow_demo
+def softmax_overflow_demo(large_value):
+    """Show that naive exp overflows on a large logit.
+
+    Return {'naive_exp': float, 'overflowed': bool}.
+    """
+    # TODO: exponentiate large_value via array_exp and report whether it is inf.
+    naive_exp = array_exp(large_value)
+    return {'naive_exp': naive_exp, 'overflowed': np.equal(naive_exp, np.inf)}
 
 # Step 32 - stable_softmax_1d (not yet solved)
 # TODO: implement

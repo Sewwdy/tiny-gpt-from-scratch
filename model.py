@@ -250,8 +250,15 @@ def softmax_overflow_demo(large_value):
     naive_exp = array_exp(large_value)
     return {'naive_exp': naive_exp, 'overflowed': np.equal(naive_exp, np.inf)}
 
-# Step 32 - stable_softmax_1d (not yet solved)
-# TODO: implement
+# Step 32 - stable_softmax_1d
+import numpy as np
+
+def stable_softmax_1d(logits):
+    """Numerically stable softmax over a 1D logits vector."""
+    # TODO: subtract the max before exponentiating, then normalize.
+    m = max_along_axis(logits, axis=0)
+    normexp = array_exp(logits-m)
+    return normexp/sum_all(normexp)
 
 # Step 33 - stable_softmax_2d_rowwise (not yet solved)
 # TODO: implement
